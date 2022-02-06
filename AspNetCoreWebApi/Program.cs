@@ -7,13 +7,14 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(
         builder =>
         {
-            builder.WithOrigins(
-                    "http://aspnetcorewebapi.onrender.com/",
-                    "https://aspnetcorewebapi.onrender.com/",
-                    "http://blazorwasmsample.onrender.com/",
-                    "https://blazorwasmsample.onrender.com/");
-                //.AllowAnyHeader()
-                //.AllowAnyMethod();
+            // builder.WithOrigins(
+            //         "http://aspnetcorewebapi.onrender.com/",
+            //         "https://aspnetcorewebapi.onrender.com/",
+            //         "http://blazorwasmsample.onrender.com/",
+            //         "https://blazorwasmsample.onrender.com/")
+            builder.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
         });
 });
 
