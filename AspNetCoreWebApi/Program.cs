@@ -8,12 +8,13 @@ builder.Services.AddCors(options =>
         builder =>
         {
             builder.WithOrigins(
-                "http://aspnetcorewebapi.onrender.com/",
-                "https://aspnetcorewebapi.onrender.com/",
-                "http://blazorwasmsample.onrender.com/",
-                "https://blazorwasmsample.onrender.com/");
-        }
-    );
+                    "http://aspnetcorewebapi.onrender.com/",
+                    "https://aspnetcorewebapi.onrender.com/",
+                    "http://blazorwasmsample.onrender.com/",
+                    "https://blazorwasmsample.onrender.com/");
+                //.AllowAnyHeader()
+                //.AllowAnyMethod();
+        });
 });
 
 builder.Services.AddControllers();
@@ -26,13 +27,16 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    //app.UseHttpsRedirection();
+    // Do DEV-only stuff
 }
+
+//app.UseHttpsRedirection();
+//app.UseStaticFiles();
+app.UseRouting();
+app.UseCors();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
-app.UseCors();
 
 app.UseAuthorization();
 
